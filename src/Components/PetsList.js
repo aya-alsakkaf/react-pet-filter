@@ -3,14 +3,12 @@ import pets from "../petsData";
 import PetItem from "./PetItem";
 
 function PetsList() {
-  const [query, setQuery] = useState(pets);
-  const filterPets = (e) => {
-    let search = e.target.value;
-    let result = pets.filter((pet) => (pet.name.toLowerCase()).includes(search.toLowerCase()));
-    setQuery(result);
-  }
+  const [query, setQuery] = useState("");
+  const [type, setType] = useState("");
 
-  const petList = query.map((pet) => <PetItem pet={pet} key={pet.id} />);
+  const filteredByName = pets.filter((pet) => (pet.name.toLowerCase()).includes(query.toLowerCase()))
+  const filteredByType = filteredByName.filter((pet) => pet.type.includes(type));
+  const petList = filteredByType.map((pet) => <PetItem pet={pet} key={pet.id} />);
 
   return (
     <section id="doctors" className="doctor-section pt-140">
@@ -28,12 +26,12 @@ function PetsList() {
                   placeholder="Search"
                   aria-label="Search"
                   aria-describedby="search-addon"
-                  onChange={filterPets}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
               </div>
               <br />
               Type:
-              <select className="form-select">
+              <select className="form-select" onChange={(e) => setType(e.target.value)}>
                 <option value="" selected>
                   All
                 </option>
