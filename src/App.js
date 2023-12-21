@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./assets/css/animate.css";
+import "./assets/css/bootstrap-5.0.0-beta2.min.css";
+import "./assets/css/LineIcons.2.0.css";
+import "./assets/css/main.css";
+import "./assets/css/tiny-slider.css";
+import PetsList from "./Components/PetsList";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PetsList />
     </div>
   );
 }
